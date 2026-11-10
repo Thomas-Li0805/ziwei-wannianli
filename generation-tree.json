@@ -1,0 +1,29 @@
+{
+  "root": "shared-shell",
+  "nodes": [
+    {
+      "id": "shared-shell",
+      "type": "shared",
+      "children": ["page-zipan", "page-calendar"],
+      "outputPath": null,
+      "description": "共享外壳：标题栏、Tab 栏、页面背景与极简禅意样式系统"
+    },
+    {
+      "id": "page-zipan",
+      "type": "page",
+      "stateRole": "base",
+      "stateGroupId": "main-tabs",
+      "outputPath": "pages/zipan.html",
+      "description": "命盘布阵 Tab：左侧星曜库、中间十二宫命盘、右侧宫位场景"
+    },
+    {
+      "id": "page-calendar",
+      "type": "page",
+      "stateRole": "derived",
+      "stateGroupId": "main-tabs",
+      "baseStatePageId": "page-zipan",
+      "outputPath": "pages/calendar.html",
+      "description": "四柱万年历 Tab：万年历卡片、日期网格、节假图例"
+    }
+  ]
+}

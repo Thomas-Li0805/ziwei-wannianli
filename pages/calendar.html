@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紫微斗数 · 星曜四化 · 命盘布阵</title>
+    <link rel="stylesheet" href="../assets/theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--zw-background);
+    --color-foreground: var(--zw-foreground);
+    --color-card: var(--zw-card);
+    --color-card-foreground: var(--zw-card-foreground);
+    --color-popover: var(--zw-popover);
+    --color-popover-foreground: var(--zw-popover-foreground);
+    --color-primary: var(--zw-primary);
+    --color-primary-foreground: var(--zw-primary-foreground);
+    --color-muted: var(--zw-muted);
+    --color-muted-foreground: var(--zw-muted-foreground);
+    --color-border: var(--zw-border);
+    --color-input: var(--zw-input);
+    --color-ring: var(--zw-ring);
+    --radius-sm: var(--zw-radius-small);
+    --radius-md: var(--zw-radius-medium);
+    --radius-lg: var(--zw-radius-large);
+  }
+  @layer base {
+    body { background: var(--zw-background); color: var(--zw-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1><span class="star-deco">◈</span> 星曜 · 四化 · 命盘 <span class="star-deco">◈</span></h1>
+            <p>点击星曜库查看宫位场景 · 拖拽星曜到命盘布阵</p>
+            <div class="hint">点击星曜 · 拖拽布阵 · 四化显象</div>
+        </div>
+        
+        <!-- Tab 切换标签 -->
+        <div class="tab-bar">
+            <button class="tab-btn" data-tab="tab-zipan" data-dom-id="tab-zipan">命盘布阵</button>
+            <button class="tab-btn active" data-tab="tab-calendar" data-dom-id="tab-calendar">四柱万年历</button>
+        </div>
+
+        <div class="content-wrapper">
+            
+            <!-- Tab 1: 紫微斗数 -->
+            <div class="tab-content" id="tab-zipan">
+                <div class="controls">
+                    <span class="label">四化</span>
+                    <div class="sihua-group">
+                        <button class="sihua-btn" data-sihua="lu"><span class="sihua-icon">禄</span> 化禄</button>
+                        <button class="sihua-btn" data-sihua="quan"><span class="sihua-icon">权</span> 化权</button>
+                        <button class="sihua-btn" data-sihua="ke"><span class="sihua-icon">科</span> 化科</button>
+                        <button class="sihua-btn" data-sihua="ji"><span class="sihua-icon">忌</span> 化忌</button>
+                    </div>
+                    <button class="clear-btn" id="clearSihua">清除</button>
+                    <div class="minggong-selector">
+                        <label for="minggongSelect">命宫</label>
+                        <select id="minggongSelect">
+                            <option value="子">子</option><option value="丑">丑</option><option value="寅">寅</option>
+                            <option value="卯">卯</option><option value="辰">辰</option><option value="巳">巳</option>
+                            <option value="午">午</option><option value="未">未</option><option value="申">申</option>
+                            <option value="酉">酉</option><option value="戌">戌</option><option value="亥">亥</option>
+                        </select>
+                    </div>
+                    <div class="minggong-selector nayin-year-selector">
+                        <label for="nayinYearSelect">年份</label>
+                        <select id="nayinYearSelect"></select>
+                    </div>
+                    <span class="mode-hint">点击星曜 · 拖拽至宫位</span>
+                    <button class="hetu-toggle" id="hetuToggleBtn">河图</button>
+                    <button class="clear-chart-btn" id="clearChartBtn">清空命盘</button>
+                </div>
+                
+                <!-- 河图弹窗 -->
+                <div class="hetu-overlay" id="hetuOverlay">
+                    <div class="hetu-panel">
+                        <button class="close-btn" id="hetuCloseBtn">×</button>
+                        <h2>河图 · 生成数</h2>
+                        <div class="hetu-sub">天一生水 · 地二生火 · 天三生木 · 地四生金 · 天五生土</div>
+                        <div class="hetu-svg-container">
+                            <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="520" height="520" rx="4" fill="#f8f4ee" />
+                                <circle cx="260" cy="260" r="200" fill="none" stroke="rgba(61,53,46,0.06)" stroke-width="1.5" stroke-dasharray="6,5" />
+                                <circle cx="260" cy="260" r="90" fill="none" stroke="rgba(61,53,46,0.04)" stroke-width="1" />
+                                <circle cx="260" cy="75" r="20" fill="rgba(180,120,100,0.06)" />
+                                <text x="260" y="72" text-anchor="middle" font-size="18" fill="#7a5a4a" font-weight="700">7</text>
+                                <text x="260" y="90" text-anchor="middle" font-size="12" fill="#6a5a4a" font-weight="300">成</text>
+                                <circle cx="260" cy="130" r="16" fill="rgba(180,120,100,0.08)" />
+                                <text x="260" y="127" text-anchor="middle" font-size="16" fill="#7a5a4a" font-weight="700">2</text>
+                                <text x="260" y="142" text-anchor="middle" font-size="11" fill="#6a5a4a" font-weight="300">生</text>
+                                <circle cx="260" cy="445" r="20" fill="rgba(60,130,150,0.06)" />
+                                <text x="260" y="442" text-anchor="middle" font-size="18" fill="#4a7a7a" font-weight="700">6</text>
+                                <text x="260" y="460" text-anchor="middle" font-size="12" fill="#6a5a4a" font-weight="300">成</text>
+                                <circle cx="260" cy="390" r="16" fill="rgba(60,130,150,0.08)" />
+                                <text x="260" y="387" text-anchor="middle" font-size="16" fill="#4a7a7a" font-weight="700">1</text>
+                                <text x="260" y="402" text-anchor="middle" font-size="11" fill="#6a5a4a" font-weight="300">生</text>
+                                <circle cx="65" cy="260" r="20" fill="rgba(80,150,120,0.06)" />
+                                <text x="65" y="257" text-anchor="middle" font-size="18" fill="#4a7a5a" font-weight="700">8</text>
+                                <text x="65" y="275" text-anchor="middle" font-size="12" fill="#6a5a4a" font-weight="300">成</text>
+                                <circle cx="120" cy="260" r="16" fill="rgba(80,150,120,0.08)" />
+                                <text x="120" y="257" text-anchor="middle" font-size="16" fill="#4a7a5a" font-weight="700">3</text>
+                                <text x="120" y="272" text-anchor="middle" font-size="11" fill="#6a5a4a" font-weight="300">生</text>
+                                <circle cx="455" cy="260" r="20" fill="rgba(160,160,155,0.05)" stroke="rgba(160,160,155,0.04)" stroke-width="1" />
+                                <text x="455" y="257" text-anchor="middle" font-size="18" fill="#6a6a5a" font-weight="700">9</text>
+                                <text x="455" y="275" text-anchor="middle" font-size="12" fill="#6a5a4a" font-weight="300">成</text>
+                                <circle cx="400" cy="260" r="16" fill="rgba(160,160,155,0.08)" stroke="rgba(160,160,155,0.03)" stroke-width="1" />
+                                <text x="400" y="257" text-anchor="middle" font-size="16" fill="#6a6a5a" font-weight="700">4</text>
+                                <text x="400" y="272" text-anchor="middle" font-size="11" fill="#6a5a4a" font-weight="300">生</text>
+                                <circle cx="260" cy="260" r="26" fill="rgba(180,165,140,0.05)" />
+                                <text x="260" y="253" text-anchor="middle" font-size="20" fill="#6a5a3a" font-weight="700">10</text>
+                                <text x="260" y="270" text-anchor="middle" font-size="12" fill="#6a5a4a" font-weight="300">成</text>
+                                <circle cx="260" cy="300" r="18" fill="rgba(180,165,140,0.08)" />
+                                <text x="260" y="297" text-anchor="middle" font-size="16" fill="#6a5a3a" font-weight="700">5</text>
+                                <text x="260" y="312" text-anchor="middle" font-size="11" fill="#6a5a4a" font-weight="300">生</text>
+                                <text x="260" y="48" text-anchor="middle" font-size="15" fill="#7a5a4a" font-weight="500">南 · 火</text>
+                                <text x="260" y="480" text-anchor="middle" font-size="15" fill="#4a7a7a" font-weight="500">北 · 水</text>
+                                <text x="40" y="260" text-anchor="middle" font-size="15" fill="#4a7a5a" font-weight="500">东 · 木</text>
+                                <text x="480" y="260" text-anchor="middle" font-size="15" fill="#6a6a5a" font-weight="500">西 · 金</text>
+                                <text x="260" y="225" text-anchor="middle" font-size="17" fill="#6a5a3a" font-weight="500">中 · 土</text>
+                                <text x="260" y="222" text-anchor="middle" font-size="9" fill="#8a7a6a" font-style="italic">北 → 东 → 南 → 西</text>
+                            </svg>
+                        </div>
+                        <div class="hetu-legend">
+                            <div class="legend-item"><span class="legend-color" style="background:rgba(180,120,100,0.5);"></span>南 · 火（生数2 · 成数7）</div>
+                            <div class="legend-item"><span class="legend-color" style="background:rgba(60,130,150,0.5);"></span>北 · 水（生数1 · 成数6）</div>
+                            <div class="legend-item"><span class="legend-color" style="background:rgba(80,150,120,0.5);"></span>东 · 木（生数3 · 成数8）</div>
+                            <div class="legend-item"><span class="legend-color" style="background:rgba(160,160,155,0.3);"></span>西 · 金（生数4 · 成数9）</div>
+                            <div class="legend-item"><span class="legend-color" style="background:rgba(180,165,140,0.4);"></span>中 · 土（生数5 · 成数10）</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 三栏主体 -->
+                <div class="three-col">
+                    <div class="star-library" id="starLibrary">
+                        <div class="lib-title">星曜库</div>
+                        <div class="lib-sub">点击查看宫位场景</div>
+                        <div class="lib-grid" id="libGrid"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-grid" id="chartGrid"></div>
+                    </div>
+                    <div class="scene-panel" id="scenePanel">
+                        <div class="scene-empty">点击左侧星曜，查看十二宫场景</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: 万年历 -->
+            <div class="tab-content active" id="tab-calendar">
+                <div id="calendarApp">
+                    <div class="cal-header">
+                        <div class="cal-title-section">
+                            <h1>四柱万年历</h1>
+                            <div class="cal-sub-text" id="calCurrentDateDisplay">
+                                农历 甲辰年 腊月初十 
+                                <span class="bazi-tag" id="calBaziDisplay">年: -- 月: -- 日: -- 时: --</span>
+                            </div>
+                        </div>
+                        <div class="cal-controls">
+                            <div class="btn-group">
+                                <button class="btn" id="calBtnPrevMonth">上月</button>
+                                <button class="btn" id="calBtnNextMonth">下月</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn" id="calBtnToday">今 日</button>
+                                <button class="btn" id="calBtnJumpYear">今 年</button>
+                            </div>
+                            <select id="calSelectYear"></select> <span style="color:#8a7a6a;">年</span>
+                            <select id="calSelectMonth"></select> <span style="color:#8a7a6a;">月</span>
+                            <select id="calSelectDay"></select> <span style="color:#8a7a6a;">日</span>
+                            <button class="btn btn-primary" id="calBtnJumpDate">跳转</button>
+                            <select id="calSelectShiChen" style="margin-left:8px; border-left: 1px solid rgba(61,53,46,0.06); padding-left:10px;">
+                                <option value="23">子时 (23:00-01:00)</option>
+                                <option value="1">丑时 (01:00-03:00)</option>
+                                <option value="3">寅时 (03:00-05:00)</option>
+                                <option value="5">卯时 (05:00-07:00)</option>
+                                <option value="7">辰时 (07:00-09:00)</option>
+                                <option value="9">巳时 (09:00-11:00)</option>
+                                <option value="11" selected>午时 (11:00-13:00)</option>
+                                <option value="13">未时 (13:00-15:00)</option>
+                                <option value="15">申时 (15:00-17:00)</option>
+                                <option value="17">酉时 (17:00-19:00)</option>
+                                <option value="19">戌时 (19:00-21:00)</option>
+                                <option value="21">亥时 (21:00-23:00)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="cal-week-header">
+                        <div class="cal-week-item weekend">日</div><div class="cal-week-item">一</div><div class="cal-week-item">二</div>
+                        <div class="cal-week-item">三</div><div class="cal-week-item">四</div><div class="cal-week-item">五</div>
+                        <div class="cal-week-item weekend">六</div>
+                    </div>
+                    <div class="cal-grid" id="calGrid"></div>
+                    
+                    <div class="cal-footer">
+                        <div class="cal-legend">
+                            <span><span class="dot" style="background:#7a3a2a;"></span> 周末</span>
+                            <span><span class="dot" style="background:#8a3a2a;"></span> 节日</span>
+                            <span><span class="dot" style="background:#2a5a7a;"></span> 节气</span>
+                        </div>
+                        <div>数据源于标准历法 · 1900-2100</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="../assets/app.js"></script>
+    <link rel="stylesheet" href="../assets/app.css">
+</body>
+</html>

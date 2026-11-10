@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "id": "page-zipan",
+      "title": "命盘布阵",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1788768540000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1126,
+          "viewportWidth": 1440,
+          "sourceHash": "fnv1a-7cd3659e",
+          "measuredAt": 1788771904736
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/zipan.html",
+        "interactions": [
+          {
+            "domId": "tab-calendar",
+            "targetPageId": "page-calendar",
+            "hideEdge": true,
+            "transitionLabel": "切换至四柱万年历"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-calendar",
+      "title": "四柱万年历",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1788768540000,
+      "canvasData": {
+        "x": 480,
+        "y": 0,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1066,
+          "viewportWidth": 1440,
+          "sourceHash": "fnv1a-5145e1ca",
+          "measuredAt": 1788771904736
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/calendar.html",
+        "interactions": [
+          {
+            "domId": "tab-zipan",
+            "targetPageId": "page-zipan",
+            "hideEdge": true,
+            "transitionLabel": "切换至命盘布阵"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "desktop",
+    "projectName": "紫微万年历",
+    "designLibrary": null
+  }
+}

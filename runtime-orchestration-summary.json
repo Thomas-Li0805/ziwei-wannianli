@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.0",
+  "skillProvenance": {
+    "name": "solo-design",
+    "version": "2026.08.06.19.15.08",
+    "version_source": "skill-release-manifest.json",
+    "schema_version": "1.0",
+    "release": "prompt-base-cloud-ssot-migration",
+    "read_status": "loaded"
+  },
+  "project": {
+    "operation": "create",
+    "resolvedLane": "complex_html_page",
+    "intentProfile": {
+      "caseFamily": "full_redesign",
+      "sourceType": "html_file",
+      "deviceTarget": "desktop"
+    },
+    "selectedIntentWorkflowRead": true,
+    "contextReadScope": [
+      "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+      "intent-workflows/intent-project-complex-build/00-requirement-and-style-intake.md",
+      "delivery-quality/reference-material-ingestion-rules.md",
+      "shared-runtime/design-artifact-formats/design-project-file-format.md",
+      "shared-runtime/orchestration-summary-contract/orchestration-summary-contract.md",
+      "intent-workflows/intent-project-complex-build/orchestration-summary-fields.md",
+      "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md",
+      "intent-workflows/intent-project-complex-build/complex-page-runtime.md"
+    ],
+    "contextRequirementsLoaded": [
+      {
+        "path": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-project-complex-build/00-requirement-and-style-intake.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "delivery-quality/reference-material-ingestion-rules.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "shared-runtime/design-artifact-formats/design-project-file-format.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "shared-runtime/orchestration-summary-contract/orchestration-summary-contract.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      }
+    ],
+    "projectName": "紫微万年历",
+    "deviceType": "desktop",
+    "designRead": "紫微斗数与四柱万年历桌面 Web 应用 / 中文命理爱好者 / 极简禅意 / 信息密集但需留白 / 避免过度装饰与低对比度",
+    "designDials": {
+      "layoutVariance": 3,
+      "motionIntensity": 2,
+      "visualDensity": 3
+    },
+    "styleDefinitionBrief": "极简禅意：米白纸张底色、远山青主色、炭墨文字、克制圆角、充足留白，让命盘与日历信息更聚焦可读。",
+    "cssPreflightEvidence": {
+      "scriptPath": "shared-runtime/deterministic-tooling/apply-html-head-contract.mjs",
+      "cssFilePath": "d:/TRAE_WORK/6a9e6f56acf50c726de68b67/ziwei-wannianli/colors_and_type.css",
+      "preflightOutputPath": "d:/TRAE_WORK/6a9e6f56acf50c726de68b67/ziwei-wannianli/.preflight/preflight.html",
+      "exitCode": 0,
+      "verified": true
+    },
+    "mobileNavigation": {
+      "applies": false
+    },
+    "sharedProjectShellContract": {
+      "hasSharedShell": true,
+      "shellRegions": [
+        "header",
+        "tab-bar",
+        "page-frame"
+      ],
+      "radiusScale": {
+        "sm": "4px",
+        "md": "8px",
+        "lg": "12px",
+        "full": "9999px"
+      },
+      "surfaceDepthModel": "border-led",
+      "typographySystem": {
+        "titleStack": "'Noto Serif SC', 'Songti SC', 'SimSun', serif",
+        "bodyStack": "'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif"
+      }
+    },
+    "generationTree": {
+      "root": "shared-shell",
+      "nodes": [
+        {
+          "id": "shared-shell",
+          "type": "shared",
+          "children": [
+            "page-zipan",
+            "page-calendar"
+          ]
+        },
+        {
+          "id": "page-zipan",
+          "type": "page",
+          "stateRole": "base",
+          "stateGroupId": "main-tabs"
+        },
+        {
+          "id": "page-calendar",
+          "type": "page",
+          "stateRole": "derived",
+          "stateGroupId": "main-tabs",
+          "baseStatePageId": "page-zipan"
+        }
+      ]
+    },
+    "dispatchPreflightManifest": [
+      {
+        "nodeId": "page-zipan",
+        "htmlSrc": "pages/zipan.html",
+        "laneContract": "complex-page-dispatch-contract.md",
+        "sharedTemplate": "shared-shell",
+        "supplementaryReads": [
+          {
+            "path": "c:/Users/Family/.trae-cn/attachments/6a9e6f56acf50c726de68b6a/04634775-0b94-4783-a16e-1507049d67f5_8da513b8-6b65-404b-85c5-6ff4a9610134_紫薇万年历B.html",
+            "reason": "source HTML for content and JS preservation",
+            "ownerLane": "complex_html_page"
+          }
+        ],
+        "allowedWritePaths": [
+          "pages/zipan.html"
+        ],
+        "forbiddenWriteRoots": [
+          "ziwei-wannianli.design",
+          "runtime-orchestration-summary.json"
+        ]
+      },
+      {
+        "nodeId": "page-calendar",
+        "htmlSrc": "pages/calendar.html",
+        "laneContract": "complex-page-dispatch-contract.md",
+        "sharedTemplate": "shared-shell",
+        "supplementaryReads": [
+          {
+            "path": "../../attachments/6a9e6f56acf50c726de68b6a/04634775-0b94-4783-a16e-1507049d67f5_8da513b8-6b65-404b-85c5-6ff4a9610134_紫薇万年历B.html",
+            "reason": "source HTML for content and JS preservation",
+            "ownerLane": "complex_html_page"
+          }
+        ],
+        "allowedWritePaths": [
+          "pages/calendar.html"
+        ],
+        "forbiddenWriteRoots": [
+          "ziwei-wannianli.design",
+          "runtime-orchestration-summary.json"
+        ]
+      }
+    ],
+    "expectedDispatches": [
+      {
+        "nodeId": "page-zipan",
+        "pageId": "page-zipan",
+        "targetPageId": "page-zipan",
+        "htmlSrc": "pages/zipan.html",
+        "status": "completed",
+        "changedFiles": [
+          "pages/zipan.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "zipan-redesign-trace",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-09-07T09:00:19.041Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-calendar",
+        "pageId": "page-calendar",
+        "targetPageId": "page-calendar",
+        "htmlSrc": "pages/calendar.html",
+        "status": "completed",
+        "changedFiles": [
+          "pages/calendar.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "calendar-redesign-trace",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-09-07T09:00:19.140Z",
+        "source": "record-dispatch-completion.mjs"
+      }
+    ],
+    "validationRunDiscipline": {
+      "finalValidationScript": "shared-runtime/deterministic-tooling/validate-design-workspace.mjs",
+      "readinessScript": "shared-runtime/deterministic-tooling/validate-finish-readiness.mjs"
+    },
+    "validationHistory": [],
+    "validationRepairLedger": [],
+    "lowValueCallWatchdog": {
+      "noProgressNextAction": "return blocked summary if no file writes or dispatch progress in the next turn"
+    },
+    "mainAgentPostDispatchMutations": []
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "cssFilePath": "colors_and_type.css",
+    "brandPrefix": "zw",
+    "styleConstraints": {
+      "radiusMax": 16,
+      "staticShadowAlphaMax": 0.05,
+      "singlePrimaryHue": true,
+      "noSecondaryAccent": true
+    }
+  },
+  "pages": [
+    {
+      "nodeId": "page-zipan",
+      "title": "命盘布阵",
+      "htmlSrc": "pages/zipan.html",
+      "pageIndex": 1,
+      "stateRole": "base",
+      "stateGroupId": "main-tabs",
+      "visualNorthStar": "左侧星曜库、中间十二宫命盘、右侧宫位场景，三栏布局；信息卡片化，留白充足，重点使用远山青强调命宫与选中状态。",
+      "compositionPattern": "三栏固定侧边栏 + 中央自适应命盘网格 + 右侧详情面板；顶部共享标题与四化控制栏。",
+      "continuityAnchors": [
+        "共享外壳：标题栏、Tab 栏、控制栏、页面背景与圆角系统保持一致",
+        "仅 Tab 激活状态与主内容区不同，其余 shell 区域完全一致"
+      ],
+      "componentPlan": [
+        "header",
+        "tab-bar",
+        "control-bar",
+        "star-library",
+        "chart-grid",
+        "scene-panel",
+        "hetu-modal"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false
+    },
+    {
+      "nodeId": "page-calendar",
+      "title": "四柱万年历",
+      "htmlSrc": "pages/calendar.html",
+      "pageIndex": 2,
+      "stateRole": "derived",
+      "stateGroupId": "main-tabs",
+      "baseStatePageId": "page-zipan",
+      "visualNorthStar": "万年历卡片居中，顶部标题与控制栏、星期标题、日期网格、底部图例；周末与节气使用柔和标签色，整体留白充足。",
+      "compositionPattern": "单列居中卡片布局；顶部 header 与 controls，中部 7xN 日期网格，底部图例。",
+      "continuityAnchors": [
+        "共享外壳：标题栏、Tab 栏、页面背景与圆角系统保持一致",
+        "仅 Tab 激活状态与主内容区不同，其余 shell 区域完全一致"
+      ],
+      "componentPlan": [
+        "header",
+        "tab-bar",
+        "calendar-card",
+        "date-grid",
+        "footer-legend"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false
+    }
+  ],
+  "assets": [],
+  "wiringPlan": [
+    {
+      "fromPageId": "page-zipan",
+      "domId": "tab-calendar",
+      "targetPageId": "page-calendar",
+      "hideEdge": true,
+      "transitionLabel": "切换至四柱万年历"
+    },
+    {
+      "fromPageId": "page-calendar",
+      "domId": "tab-zipan",
+      "targetPageId": "page-zipan",
+      "hideEdge": true,
+      "transitionLabel": "切换至命盘布阵"
+    }
+  ],
+  "hiddenInteractionPlan": []
+}
